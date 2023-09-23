@@ -40,10 +40,10 @@
               <input onkeyup="searchBook(event)" class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
             </form>
-            
-            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"><i class="bi bi-cart"></i></button>
           </div>
+          
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"><i class="bi bi-cart"></i></button>          
         </div>
       </nav>
 
@@ -57,13 +57,11 @@
           <ul class="list-group">
           </ul>
           <h1>Totale: <span class="totale">0</span> €</h1>
-          <button class="btn btn-warning" onclick="emptyCart()"> Empty </button>
+          <button class="btn btn-danger" onclick="emptyCart()"> Empty </button>
         </div>
     </div>
 
     <main role="main">
-    
-
       <div class="album py-5 bg-dark">
         <div class="container">
           <div class="row"></div>

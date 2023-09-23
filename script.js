@@ -15,16 +15,15 @@ const fetchBooks = () => {
                      <div class="card mb-4 shadow-sm" id="book_${book.asin}">
                        <img src='${book.img}'/>
 
-                     <div class="card-body">
-                     <p class="font-weight-bold text-truncate book-title"> ${book.title} </p>
-                     <div class="d-flex justify-content-between align-items-center">
-                    
-                     <button class="btn btn-danger" onclick="addToCart('${book.title}', '${book.price}', '${book.asin}')">${book.price} € - <i class="bi bi-cart"></i> </button>
-                     <button class="btn btn-secondary" onclick="hideCard(event, '${book}')"><i class="bi bi-x-circle-fill"></i></button>
-                  </div>
-                </div>
-              </div> 
-              </div>`;
+                       <div class="card-body">
+                          <p class="font-weight-bold text-truncate book-title"> ${book.title} </p>
+                          <div class="d-flex justify-content-between align-items-center">                    
+                            <button class="btn btn-danger" onclick="addToCart('${book.title}', '${book.price}', '${book.asin}')"><i class="bi bi-cart"></i> ${book.price} €  </button>
+                            <button class="btn btn-secondary" onclick="hideCard(event)"><i class="bi bi-x-circle-fill"></i></button>
+                           </div>
+                        </div>
+                      </div> 
+                    </div>`;
         })
         .join("")
     })
@@ -58,9 +57,23 @@ const searchBook = (ev) => {
     <button class='btn btn-secondary' onclick='removeFromCart(event, "${asin}", "${price}")'> X </button>
     </li> `
 
-    const totale = document.querySelector("h1 span")
-    totale.innerText = (Number(totale.innerText) + Number(price)).toFixed(2)
+    /*const totale = document.querySelector("h1 span")
+    totale.innerText = (Number(totale.innerText) + Number(price)).toFixed(2)*/
+
+    let array = [document.querySelectorAll(".book-price")]
+    let somma = 0
+    array.forEach (Number=> {
+      somma = somma + Number
+  })
+  const totale = document.querySelector("h1 span")
+  totale.innerText = somma
   }
+   
+ 
+    
+
+
+ 
 
   const removeFromCart = (event, asin, price) => {
     event.target.closest("li").remove()
@@ -77,8 +90,4 @@ const searchBook = (ev) => {
     totale.innerText = "0"
 }
 
-  const hideCard = (event) => {
-    const currCard = document.querySelector(".col-12")
-    currCard.style.display = "none"
-    
-}
+  const hideCard = (event) => document.querySelector(".col-12").remove();    
