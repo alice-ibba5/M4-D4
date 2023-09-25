@@ -7,4 +7,14 @@ img {
     aspect-ratio: 0.7;
     object-fit: cover;
     border-radius: 10px;
+    
+}
+
+.card:hover {
+    transform: scale(105%);
+    box-shadow: 5px 5px 15px 5px #3a3a3a;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
