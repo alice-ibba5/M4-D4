@@ -11,7 +11,7 @@ const fetchBooks = () => {
 
       cont.innerHTML = res
         .map((book) => {
-          return ` <div class="col-12 col-lg-2"> 
+          return ` <div class="col-12 col-lg-2 col-md-3 col-sm-6"> 
                      <div class="card mb-4 shadow-sm" id="book_${book.asin}">
                        <img src='${book.img}'/>
 
@@ -19,7 +19,7 @@ const fetchBooks = () => {
                           <p class="fw-bold text-truncate book-title"> ${book.title} </p>
                           <p class="fw-bold book-price"> ${book.price} €</p>
                           <div class="d-flex justify-content-evenly align-items-center">                    
-                            <button class="btn btn-danger" onclick="addToCart('${book.title}', '${book.price}', '${book.asin}')"><i class="bi bi-cart"></i></button>
+                            <button class="btn btn-danger" onclick="addToCart('${book.title}', '${book.price}', '${book.asin}', '${book.img}')"><i class="bi bi-cart"></i></button>
                             <button class="btn btn-primary">Details</button>
                             <button class="btn btn-secondary" onclick="hideCard(event)"><i class="bi bi-x-circle-fill"></i></button>
                            </div>
@@ -32,15 +32,19 @@ const fetchBooks = () => {
     .catch((err) => console.error(err))
 }
 
-const addToCart = (title, price, asin) => {
+const addToCart = (title, price, asin, img) => {
   const book = document.querySelector("#book_" + asin)
   book.style.opacity = "0.5"
   const cart = document.querySelector(".list-group")
   cart.innerHTML += `
-  <li class="list-group-item"> ${title}, ${price} €
-    <button class='btn btn-outline-secondary' onclick='removeFromCart(event, "${asin}", "${price}")'> X </button>
+  <li class="list-group-item"> 
+  <div class="d-flex flex-nowrap">
+  <img src="${img}"/> ${title}, ${price} €
+  <button class="btn btn-outline-secondary align-self-center" onclick='removeFromCart(event, "${asin}", "${price}")'> X </button>
+  </div>
+    
     </li>
-  `
+  `;
   const totale = document.querySelector("h1 span")
   totale.innerText = (Number(totale.innerHTML) + Number(price)).toFixed(2)
 }
