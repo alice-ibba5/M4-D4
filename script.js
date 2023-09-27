@@ -77,6 +77,9 @@ const removeFromCart = (event, asin, price) => {
   totale.innerText = (Number(totale.innerText) - Number(price)).toFixed(2);
   const book = document.querySelector("#book_" + asin);
   book.style.opacity = "1";
+
+  const counter = document.querySelector(".counter");
+  counter.innerText = document.getElementById('carrello').getElementsByTagName('li').length;
 };
 
 const emptyCart = () => {
@@ -86,6 +89,9 @@ const emptyCart = () => {
     .forEach((card) => (card.style.opacity = "1"));
   const totale = document.querySelector("h1 span");
   totale.innerText = "0";
+
+  const counter = document.querySelector(".counter");
+  counter.innerText = document.getElementById('carrello').getElementsByTagName('li').length;
 };
 
 const hideCard = (event) => event.target.closest(".col-12").remove();
