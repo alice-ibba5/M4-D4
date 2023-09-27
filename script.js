@@ -19,7 +19,7 @@ const fetchBooks = () => {
                           <p class="fw-bold book-price"> ${book.price} €</p>
                           <div class="d-flex justify-content-evenly align-items-center">                    
                             <button class="btn btn-danger" onclick="addToCart('${book.title}', '${book.price}', '${book.asin}', '${book.img}')"><i class="bi bi-cart"></i></button>
-                            <button class="btn btn-primary">Details</button>
+                            <a href="detail/detail.html?id=${book.asin}"> <button class="btn btn-primary">Details</button></a>
                             <button class="btn btn-secondary" onclick="hideCard(event)"><i class="bi bi-x-circle-fill"></i></button>
                            </div>
                         </div>
