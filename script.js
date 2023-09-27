@@ -1,4 +1,5 @@
 const url = "https://striveschool-api.herokuapp.com/books";
+let carrello = []
 
 window.onload = () => {
   fetchBooks();
@@ -38,16 +39,19 @@ const addToCart = (title, price, asin, img) => {
   cart.innerHTML += `
   <li class="list-group-item"> 
     <div class="d-flex flex-nowrap">
-      <img src="${img}"/> ${title}, ${price} €
-      <button class="btn btn-outline-secondary align-self-center" onclick='removeFromCart(event, "${asin}", "${price}")'> X </button>
+      <img src="${img}"/>
+      <div class="ms-2">
+         <p>${title}</p>
+         <p>${price} €</p>
+         <button class="btn btn-outline-secondary align-self-center" onclick='removeFromCart(event, "${asin}", "${price}")'> X </button>
+      </div>   
     </div>    
-  </li>
-  `;
+  </li>`;
   const totale = document.querySelector("h1 span");
   totale.innerText = (Number(totale.innerHTML) + Number(price)).toFixed(2);
 
-  /*const counter = document.querySelector(".counter");
-  counter.innerText = (.list-group-item).length*/
+  const counter = document.querySelector(".counter");
+  counter.innerText = document.getElementById('carrello').getElementsByTagName('li').length;
 };
 
 const searchBook = (ev) => {
@@ -88,8 +92,4 @@ const hideCard = (event) => event.target.closest(".col-12").remove();
 
 
 
-const contatore = () => {
-  
-  const cart = document.querySelector(".list-group-item");
-  
-}
+
